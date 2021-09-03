@@ -1,15 +1,23 @@
 {
-  "ansible": ["stable-2.9", "stable-2.10"],
+  "ansible": ["stable-2.10"],
   "distro": [
+    "almalinux/8/cloud",
+    "amazonlinux/2.0.20210525.0",
     "centos/7/cloud",
     "debian/11/cloud",
     "fedora/34/cloud",
+    "oracle/8/cloud",
+    "rockylinux/8/cloud",
     "ubuntu/20.04/cloud"
   ],
   "include": [
     {
       "ansible": "devel",
       "distro": "ubuntu/20.04/cloud"
+    },
+    {
+      "ansible": "stable-2.9",
+      "distro": "centos/7/cloud"
     }
   ],
   "lxd": {
