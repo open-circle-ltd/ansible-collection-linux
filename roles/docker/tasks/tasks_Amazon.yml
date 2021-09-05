@@ -1,6 +1,6 @@
 ---
 - name: Install docker package on Amazon Linux 2
   ansible.builtin.command: amazon-linux-extras install docker -y
+  args:
+    creates: '{{ (docker_engine_state == "present") | ternary("/usr/bin/docker", omit) }}'
   when: ansible_distribution_major_version == '2'
-  tags:
-    - molecule-idempotence-notest
