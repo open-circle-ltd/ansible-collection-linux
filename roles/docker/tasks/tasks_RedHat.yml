@@ -1,5 +1,10 @@
 ---
 # docker tasks for RedHat OS family
+- name: Remove docker deprecated packages
+  ansible.builtin.package:
+    name: '{{ docker_deprecated_packages }}'
+    state: absent
+
 - name: Add docker GPG key
   ansible.builtin.rpm_key:
     key: '{{ docker_base_url }}/gpg'
@@ -12,3 +17,8 @@
     owner: root
     group: root
     mode: 0644
+
+- name: Install docker packages
+  ansible.builtin.package:
+    name: '{{ docker_packages }}'
+    state: '{{ docker_engine_state }}'

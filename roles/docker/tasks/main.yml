@@ -7,7 +7,7 @@
 
 - name: Include vars for target host OS
   ansible.builtin.include_vars:
-    file: "{{ lookup('first_found', params) }}"
+    file: '{{ lookup("first_found", params) }}'
   vars:
     params:
       files:
@@ -16,26 +16,14 @@
       paths:
         - 'vars'
 
-- name: Remove docker deprecated packages
-  ansible.builtin.package:
-    name: '{{ docker_deprecated_packages }}'
-    state: absent
-    purge: '{{ (ansible_os_family == "Debian") | ternary(true, omit) }}'
-
 - name: Include tasks for target host OS
   ansible.builtin.include_tasks:
-    file: "{{ lookup('first_found', params) }}"
+    file: '{{ lookup("first_found", params) }}'
   vars:
     params:
       files:
         - 'tasks_{{ ansible_distribution }}.yml'
         - 'tasks_{{ ansible_os_family }}.yml'
-
-- name: Install docker packages
-  ansible.builtin.package:
-    name: '{{ docker_packages }}'
-    state: present
-  when: not (ansible_distribution == 'Amazon' and ansible_distribution_major_version == '2')
 
 - name: Ensure docker daemon state
   ansible.builtin.systemd:
