@@ -26,4 +26,5 @@
 - name: Install docker packages
   ansible.builtin.package:
     name: '{{ docker_packages }}'
-    state: '{{ docker_engine_state }}'
+    state: '{{ docker_package_state }}'
+    update_cache: true
