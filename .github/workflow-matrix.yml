@@ -19,7 +19,7 @@ matrix: &default
 adguardhome:
   matrix:
     <<: *default
-    install_method: binary
+    install_method: [binary]
     include:
       - ansible: devel
         distro: ubuntu/20.04/cloud
@@ -37,8 +37,8 @@ lxd:
 traefik:
   matrix:
     <<: *default
-    install_method: binary
+    install_method: [binary]
     include:
-      ansible: devel
-      distro: ubuntu/20.04/cloud
-      install_method: docker
+      - ansible: devel
+        distro: ubuntu/20.04/cloud
+        install_method: docker
