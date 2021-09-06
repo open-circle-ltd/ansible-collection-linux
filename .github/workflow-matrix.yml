@@ -8,11 +8,11 @@ matrix: &default
     - debian/11/cloud
     - fedora/34/cloud
     - oracle/8/cloud
-    - rockylinux/8/cloud
     - ubuntu/20.04/cloud
   include:
     - ansible: devel
-      distro: ubuntu/20.04/cloud
+      distro: rockylinux/8/cloud
+      experimental: true
     - ansible: stable-2.9
       distro: centos/7/cloud
 
@@ -22,11 +22,12 @@ adguardhome:
     install_method: [binary]
     include:
       - ansible: devel
-        distro: ubuntu/20.04/cloud
-        install_method: snap
+        distro: rockylinux/8/cloud
+        install_method: docker
+        experimental: true
       - ansible: stable-2.9
         distro: ubuntu/18.04/cloud
-        install_method: docker
+        install_method: snap
 
 lxd:
   matrix:
@@ -40,5 +41,6 @@ traefik:
     install_method: [binary]
     include:
       - ansible: devel
-        distro: ubuntu/20.04/cloud
+        distro: rockylinux/8/cloud
         install_method: docker
+        experimental: true
