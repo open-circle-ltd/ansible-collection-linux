@@ -35,16 +35,5 @@ jobs:
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.matrix.outputs.matrix) }}
-
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - uses: bonddim/action-lxd-init@stable
-      - uses: bonddim/action-ansible-molecule@stable
-        with:
-          molecule-command-args: --scenario-name ${{ github.workflow }}
-        env:
-          ANSIBLE_VERSION: ${{ matrix.ansible }}
-          MOLECULE_DISTRO: ${{ matrix.distro }}
+      - uses: ./.github/workflows/molecule
