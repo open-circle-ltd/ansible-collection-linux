@@ -37,5 +37,5 @@ jobs:
       matrix: ${{ fromJson(needs.matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v2
-      - name: Run molecule testt
+      - name: Run molecule@local
         uses: ./.github/workflows/molecule

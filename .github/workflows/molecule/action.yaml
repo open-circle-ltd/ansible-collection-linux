@@ -13,3 +13,4 @@ runs:
       env:
         ANSIBLE_VERSION: ${{ matrix.ansible }}
         MOLECULE_DISTRO: ${{ matrix.distro }}
+        INSTALL_METHOD: ${{ matrix.install_method }}

@@ -1,5 +1,5 @@
 ---
-matrix:
+matrix: &default
   ansible: [stable-2.10]
   distro:
     - almalinux/8/cloud
@@ -18,6 +18,8 @@ matrix:
 
 adguardhome:
   matrix:
+    <<: *default
+    install_method: binary
     include:
       - ansible: devel
         distro: ubuntu/20.04/cloud
@@ -28,12 +30,14 @@ adguardhome:
 
 lxd:
   matrix:
+    <<: *default
     exclude:
       - distro: debian/11/cloud
 
-
 traefik:
   matrix:
+    <<: *default
+    install_method: binary
     include:
       ansible: devel
       distro: ubuntu/20.04/cloud
