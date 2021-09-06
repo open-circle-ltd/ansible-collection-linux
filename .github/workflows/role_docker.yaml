@@ -36,4 +36,6 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJson(needs.matrix.outputs.matrix) }}
     steps:
-      - uses: ./.github/workflows/molecule
+      - uses: actions/checkout@v2
+      - name: Run molecule testt
+        uses: ./.github/workflows/molecule
