@@ -45,3 +45,6 @@ traefik_provider_docker_endpoint: ""
 
 # Custom dynamic config https://doc.traefik.io/traefik/reference/dynamic-configuration/file
 traefik_custom_config: {}
+
+# Enable Prometheus Metrics
+traefik_enable_metrics: true
