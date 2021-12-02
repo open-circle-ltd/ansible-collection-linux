@@ -3,10 +3,6 @@
 entryPoints:
   web:
     address: :80
-  {% if traefik_enable_metrics %}
-  metrics:
-    address: ":8082"
-  {% endif %}
   {% if traefik_enable_https %}
     {% if traefik_enable_https_redirect %}
     http:
@@ -86,9 +82,9 @@ log:
 {% if traefik_enable_metrics %}
 metrics:
   prometheus:
-    entryPoint: metrics
+    # entryPoint: metrics
     addRoutersLabels: true
     addServicesLabels: true
     # If manualRouting is true, it disables the default internal router in order to allow one to create a custom router for the prometheus@internal service.
-    #      manualRouting: true
+    manualRouting: true
 {% endif %}
